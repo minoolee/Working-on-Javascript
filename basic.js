@@ -84,3 +84,69 @@ const bObj = {
 }
 console.log(bObj);
 
+// Method shorthand 
+// bad 
+const atom = {
+    value: 1,
+    addValue: function(value) {
+        return atom.value + value;
+    }
+}
+console.log(atom.addValue(7));
+
+// good without function
+const atomExtra = {
+    value: 5,
+    addValuueExtra(value){
+        return atomExtra.value + value;
+    }
+}
+console.log(atomExtra.addValuueExtra(7));
+
+const lukeSkywalker = "Luke Skywalker";
+
+// bad 
+const shortObj = {
+    lukeSkywalker: lukeSkywalker,
+}
+console.log(shortObj.lukeSkywalker);
+
+// good just ones 
+const shortObjGood = {
+    lukeSkywalker,
+}
+console.log(shortObjGood.lukeSkywalker);
+
+const CR = "Cristiano Ronaldo"
+const MU = " Manchester United"
+
+// bad 
+const player = {
+    age: 36,
+    position: "attack",
+    CR,
+    games: 56,
+    MU,
+}
+
+// good  Group your shorthand properties at the beginning of your object declaration
+const goodPlayer = {
+    CR,
+    MU,
+    age: 36,
+    position: "attack",
+    games: 56,
+}
+
+// Only quote properties that are invalid identifiers
+const bad = {
+    'foo': 3,
+    'bar': 4,
+    'data-blah': 5,
+}
+// good only important
+const good = {
+    foo: 3,
+    bar: 4,
+    'data-blah': 5,
+}
