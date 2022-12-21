@@ -150,3 +150,104 @@ const good = {
     bar: 4,
     'data-blah': 5,
 }
+class Car {
+    constructor(name, year){
+        this.name = name;
+        this.year = year;
+    }
+    age(x) {
+        return x - this.year;
+    }
+}
+let date = new Date()
+let year = date.getFullYear();
+ let myCar = new Car("Ford", 2014)
+ console.log(myCar.age(year));
+
+ // Do not call Object.prototype methods directly, such as hasOwnProperty, propertyIsEnumerable, and isPrototypeOf
+
+ //bad 
+ //console.log(goodPlayer.hasOwnProperty(key)); // not working
+ // I need it to understand!!!
+ // bad
+//console.log(object.hasOwnProperty(key));
+
+// good
+//console.log(Object.prototype.hasOwnProperty.call(object, key));
+
+// best
+//const has = Object.prototype.hasOwnProperty; // cache the lookup once, in module scope.
+//console.log(has.call(object, key));
+/* or */
+//import has from 'has'; // https://www.npmjs.com/package/has
+//console.log(has(object, key));
+/* or */
+//console.log(Object.hasOwn(object, key)); // https://www.npmjs.com/package/object.hasown
+
+const pro = goodPlayer["age"]
+console.log(pro);
+let text = ""
+for (let i = 0; i < 6; i++) {
+
+
+}
+console.log(text);
+
+// Assign copy object.  Use the object rest parameter syntax to get a new object with certain properties omitted. 
+
+// bad 
+const original = {a:1, b:2}
+const copy = Object.assign({}, original, {c:3})
+console.log(copy);
+
+// good {... name, new value}
+const bOriginal = {a: 1, b: 2}
+const bCopy = {... bOriginal, c: 3}
+console.log(bCopy);
+
+// Arrays
+// bad 
+const bArray = new Array()
+//good
+const gArray = []
+
+// Array#push
+const someStrack = []
+// bad
+someStrack[someStrack.length] = 'abracadabra';
+console.log(someStrack);
+// good
+someStrack.push('Harry Love')
+console.log(someStrack);
+// Use array spreads ... to copy arrays
+// bad 
+const len = someStrack.length
+const itemsCopy = []
+let i;
+
+for (i = 0 ; i < len; i +=1) {
+    itemsCopy[i] = someStrack[i]
+    console.log('it' ,itemsCopy);
+}
+// good
+const assignArray = [...someStrack]
+console.log(assignArray);
+const tryNew  = Array.from(someStrack)
+console.log("try" , tryNew);
+
+// Use Array.from for converting an array-like object to an array
+const arrLike = {0:"fer", 1:"sec", 2:"thi", length:3}
+// bad
+const arr = Array.prototype.slice.call(arrLike)
+console.log(arr);
+// good
+const arrBe = Array.from(arrLike)
+console.log(arrBe);
+
+// Array callback return
+// good
+[1, 2, 3].map((x) => {
+    const y = x + 1
+    return x * y
+    
+})
