@@ -251,3 +251,33 @@ console.log(arrBe);
     return x * y
     
 })
+function getFullNameUser(user) {
+const {firstName, lastName} = user
+return `${firstName}${lastNames}`
+}
+function getFullName({firstName, lastName}) {
+return `${firstName} ${lastName}`
+
+}
+
+
+const arrRei = [0, 1, 2, 3]
+/* const first = arrRei[0]
+const second = arrRei[1] */
+const [firstNummer, secondNummer] = arrRei
+console.log("it",arrRei);
+console.log(firstNummer);
+console.log(secondNummer);
+
+// Use object destructuring for multiple return values, not array destructuring.
+// bad
+function processInput(input){
+    return [left, right, top, buttom]
+}
+const [left, top] = processInput(54,67)
+console.log(left,top);
+// good
+function processInputObj(input){
+    return{left, right, top, buttom}
+}
+const {right,buttom} = processInputObj(input)
